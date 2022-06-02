@@ -5,6 +5,7 @@ import intro1 from "../../images/intro/intro1.svg";
 import intro2 from "../../images/intro/intro2.svg";
 import Header from "../../components/header/Header";
 import { flexbox } from "../../styles/utils/flexbox";
+import Nav from "../../components/nav/Nav";
 
 const IntroUi = ({ state, f_stepTwo }) => {
   const { img, title, subTitle, btnText } = state;
@@ -12,11 +13,11 @@ const IntroUi = ({ state, f_stepTwo }) => {
   return (
     <StyledContainer>
       <Header
-        title="한 달 기억"
+        title="한 주 기억"
         className="notom18"
         style={{ color: "#434D54" }}
       />
-      <SyyledIntro state={state}>
+      <SyyledIntro>
         <figure>
           <img src={img} alt="인트로1"></img>
         </figure>
@@ -30,9 +31,7 @@ const IntroUi = ({ state, f_stepTwo }) => {
             );
           })}
         </div>
-        <nav onClick={f_stepTwo} className="nav">
-          <button className="notom18">{btnText}</button>
-        </nav>
+        <Nav text={state.btnText} onClick={state.fc} />
       </SyyledIntro>
     </StyledContainer>
   );
@@ -58,21 +57,6 @@ const SyyledIntro = styled.div`
 
     p {
       color: rgba(121, 139, 151, 1);
-    }
-  }
-
-  .nav {
-    width: 100%;
-    height: 80px;
-    position: fixed;
-    bottom: 0;
-
-    button {
-      background-color: ${(props) =>
-        props.state.step === "one" ? "#2d4e7e" : "white"};
-      color: ${(props) => (props.state.step === "one" ? "white" : "#2d4e7e")};
-      width: 100%;
-      height: 100%;
     }
   }
 `;
