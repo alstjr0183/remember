@@ -30,6 +30,61 @@ const GlobalStyle = createGlobalStyle`
   a {
     text-decoration: none;
   }
+
+
+
+            /* noto 14 */
+            .notob14 {
+        font-family: NoToB;
+        font-size: 14px;
+        line-height: 24px;
+      }
+      .notom14 {
+        font-family: NoToM;
+        font-size: 14px;
+        line-height: 24px;
+      }
+      .notor14 {
+        font-family: NoToR;
+        font-size: 14px;
+        line-height: 24px;
+      }
+
+
+            /* noto 18 */
+            .notob18 {
+        font-family: NoToB;
+        font-size: 18px;
+        line-height: 28px;
+      }
+      .notom18 {
+        font-family: NoToM;
+        font-size: 18px;
+        line-height: 28px;
+      }
+      .notor18 {
+        font-family: NoToR;
+        font-size: 18px;
+        line-height: 28px;
+      }
+
+
+            /* noto 24 */
+            .notob24 {
+        font-family: NoToB;
+        font-size: 24px;
+        line-height: 32px;
+      }
+      .notom24 {
+        font-family: NoToM;
+        font-size: 24px;
+        line-height: 32px;
+      }
+      .notor24 {
+        font-family: NoToR;
+        font-size: 24px;
+        line-height: 32px;
+      }
 `;
 
 export default GlobalStyle;
