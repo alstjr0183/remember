@@ -3,10 +3,10 @@ import styled, { css } from "styled-components";
 import theme from "./../../styles/utils/theme";
 
 const Nav = (props) => {
-  const { text = "", onClick } = props;
+  const { text = "", onClick, className = "notom18" } = props;
   return (
     <StyledNav styledProp={props.style || {}} onClick={onClick}>
-      <button className="notom18">{text}</button>
+      <button className={className}>{text}</button>
     </StyledNav>
   );
 };

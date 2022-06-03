@@ -2,13 +2,25 @@ import React from "react";
 import styled, { css } from "styled-components";
 import theme from "../../styles/utils/theme";
 import { flexbox } from "../../styles/utils/flexbox";
+import arrow_left from "../../images/common/arrow-left.svg";
+import { useNavigate } from "../../../node_modules/react-router-dom/index";
 const { fontSizes, colors } = theme;
 
 const Header = (props) => {
-  const { title } = props;
+  const navi = useNavigate();
+  const { title, back = false } = props;
   return (
     <StyledHeader className={props.className} styledProp={props.style || {}}>
-      {title}
+      {back && (
+        <figure
+          onClick={() => {
+            navi(-1);
+          }}
+        >
+          <img src={arrow_left} alt="뒤로가기"></img>
+        </figure>
+      )}
+      <div>{title}</div>
     </StyledHeader>
   );
 };
@@ -33,6 +45,12 @@ const StyledHeader = styled.div`
       color: ${color};
       background-color: ${backgroundColor};
       border-bottom: ${borderBottom};
+
+      figure {
+        ${flexbox()}
+        position:absolute;
+        left: 16px;
+      }
     `;
   }}
 `;

@@ -7,7 +7,7 @@ import Header from "../../components/header/Header";
 import { flexbox } from "../../styles/utils/flexbox";
 import Nav from "../../components/nav/Nav";
 
-const IntroUi = ({ state, f_stepTwo }) => {
+const IntroUi = ({ state, f_stepOne, f_stepTwo }) => {
   const { img, title, subTitle, btnText } = state;
 
   return (
@@ -19,7 +19,14 @@ const IntroUi = ({ state, f_stepTwo }) => {
       />
       <SyyledIntro>
         <figure>
-          <img src={img} alt="인트로1"></img>
+          {img.map((item, idx) => (
+            <img
+              style={idx === 1 ? { marginLeft: "20px" } : {}}
+              key={idx}
+              src={item.img}
+              alt="인트로1"
+            ></img>
+          ))}
         </figure>
         <div className="text">
           <h1 className="notob24">{title}</h1>
@@ -31,19 +38,28 @@ const IntroUi = ({ state, f_stepTwo }) => {
             );
           })}
         </div>
-        <Nav text={state.btnText} onClick={state.fc} />
+        <Nav
+          text={state.btnText}
+          onClick={state.fc}
+          className="notob18"
+          style={{ backgroundColor: "white", color: "#265BFF" }}
+        />
       </SyyledIntro>
     </StyledContainer>
   );
 };
 
 const SyyledIntro = styled.div`
-  height: calc(100vh - 80px);
+  height: calc(100vh - 144px);
   ${flexbox()};
   flex-direction: column;
 
+  .notor14 {
+    line-height: 20px;
+  }
+
   figure {
-    margin-bottom: 47px;
+    margin-bottom: 43px;
   }
 
   .text {
@@ -51,8 +67,8 @@ const SyyledIntro = styled.div`
     flex-direction: column;
 
     h1 {
-      color: rgba(45, 78, 126, 1);
-      margin-bottom: 16px;
+      color: #363a3c;
+      margin-bottom: 4px;
     }
 
     p {

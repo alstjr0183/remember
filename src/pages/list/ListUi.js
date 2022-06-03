@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Nav from "./../../components/nav/Nav";
 import { flexbox } from "./../../styles/utils/flexbox";
 
-const ListUi = ({ state, a_day }) => {
+const ListUi = ({ state, f_naviInsert, a_day }) => {
   return (
     <StyledContainer>
       <Header
@@ -16,13 +16,13 @@ const ListUi = ({ state, a_day }) => {
       <StyledList>
         <div className="contents">
           {a_day.map((item, idx) => (
-            <div className="contents__day" key={idx}>
+            <div className="contents__day notob14" key={idx}>
               <div className="contents__day-left">{item.day}</div>
               <div className="contents__day-right"></div>
             </div>
           ))}
         </div>
-        <Nav text={"등록하기"} />
+        <Nav onClick={f_naviInsert} text={"등록하기"} />
       </StyledList>
     </StyledContainer>
   );
@@ -41,12 +41,13 @@ const StyledList = styled.div`
     flex-direction: column;
     .contents__day {
       display: flex;
-      border-top: 1px solid #f8fafb;
-      border-bottom: 1px solid #f8fafb;
+      /* border-top: 1px solid #eaeeef; */
+      border-bottom: 1px solid #eaeeef;
       width: 100%;
       flex: 1;
 
       .contents__day-left {
+        color: #363a3c;
         width: 40px;
         height: 100%;
         ${flexbox()};

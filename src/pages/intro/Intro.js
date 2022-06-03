@@ -7,16 +7,25 @@ import { useNavigate } from "../../../node_modules/react-router-dom/index";
 
 const Intro = () => {
   const navi = useNavigate();
+  const f_stepOne = () => {
+    setState({
+      ...state,
+      img: [{ img: intro1 }, { img: intro2 }],
+      step: "two",
+      title: "일정을 등록하고",
+      subTitle: `일정을 등록하고 되새기고 유지해요!`,
+      btnText: "다음",
+      fc: f_stepTwo,
+    });
+  };
+
   const f_stepTwo = () => {
     setState({
       ...state,
-      img: intro2,
+      img: [{ img: intro2 }],
       step: "two",
       title: "습관을 개선하세요",
-      subTitle: `일정을 등록하고 되새기고 유지해요!
-      한 주 기억은 여러분의 기억 습관을 개선하기 위해
-      제작되었습니다.
-      `,
+      subTitle: `한 주 기억은 여러분의 기억 습관을 개선해요!`,
       btnText: "시작하기",
       fc: f_naviList,
     });
@@ -27,15 +36,15 @@ const Intro = () => {
   };
 
   const [state, setState] = useState({
-    img: intro1,
+    img: [{ img: intro1 }],
     step: "one",
     title: "안녕하세요",
     subTitle: "한 주 기억에 참여해 주신 여러분을 환영합니다!",
-    btnText: "들어가기",
-    fc: f_stepTwo,
+    btnText: "다음",
+    fc: f_stepOne,
   });
 
-  const props = { state, f_stepTwo };
+  const props = { state, f_stepOne };
   return <IntroUi {...props} />;
 };
 
