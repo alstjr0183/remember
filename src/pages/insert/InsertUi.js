@@ -12,7 +12,21 @@ import {
 } from "../../../node_modules/@mui/material/index";
 import arrow_bottom from "../../images/common/arrow-bottom.svg";
 
-const InsertUi = ({ state, a_select }) => {
+const InsertUi = ({
+  state,
+  a_select,
+  f_required,
+  f_save,
+  f_handleInputChange,
+}) => {
+  const { nameError, dayError, timeError } = state;
+
+  const border = "1px solid #E1E4E6";
+  const errorBorder = "1px solid #265BFF";
+
+  const nameBorder = nameError ? errorBorder : border;
+  const dayBorder = dayError ? errorBorder : border;
+  const timeBorder = timeError ? errorBorder : border;
   return (
     <StyledContainer>
       <Header
@@ -29,8 +43,15 @@ const InsertUi = ({ state, a_select }) => {
             키워드 단위로 기억할 경우 기억 효율이 극대화 됩니다.
           </p>
         </div>
-        <form className="form">
-          <Input placeholder="일정을 입력해 주세요." text="일정" />
+        <form onSubmit={f_save} className="form">
+          <Input
+            name="name"
+            guideText={state.nameMessage}
+            onChange={f_handleInputChange}
+            placeholder="일정을 입력해 주세요."
+            text="일정"
+            style={{ border: nameBorder }}
+          />
           <div className="form__select">
             <p className="notob14">요일</p>
             <select className="notor14">
@@ -38,7 +59,7 @@ const InsertUi = ({ state, a_select }) => {
                 요일을 선택해주세요.
               </option>
               {a_select.map((item, idx) => (
-                <option>{item.text}</option>
+                <option key={idx}>{item.text}</option>
               ))}
             </select>
           </div>
@@ -61,12 +82,21 @@ const InsertUi = ({ state, a_select }) => {
             </StyledSelect>
           </StyledFormControl> */}
 
-          <Input placeholder="HH:MM" text="시간" />
           <Input
+            name="time"
+            guideText={state.timeMessage}
+            onChange={f_handleInputChange}
+            style={{ border: timeBorder }}
+            placeholder="HH:MM"
+            text="시간"
+          />
+          <Input
+            name="memo"
+            onChange={f_handleInputChange}
             placeholder="위치 또는 메모할 내용을 입력해주세요."
             text="메모"
           />
-          <Nav text={"등록하기"} />
+          <Nav onClick={f_required} text={"등록하기"} />
         </form>
       </StyledInsert>
     </StyledContainer>
@@ -93,6 +123,7 @@ const StyledSelect = styled(Select)`
 
 const StyledInsert = styled.div`
   width: 100%;
+  overflow: auto;
   height: calc(100vh - 144px);
   ${flexbox("flex-start")};
   flex-direction: column;

@@ -30,6 +30,7 @@ const ListUi = ({ state, f_naviInsert, a_day }) => {
 
 const StyledList = styled.div`
   width: 100%;
+  overflow: auto;
   height: calc(100vh - 144px);
   ${flexbox()};
   flex-direction: column;

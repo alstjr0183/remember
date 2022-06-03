@@ -3,8 +3,11 @@ import styled, { css } from "styled-components";
 
 const Input = (props) => {
   const {
-    required = true,
+    name = "",
+    onChange,
+    required = false,
     text = "",
+    guideText = "",
     placeholder = "테스트",
     textClassName = "notob14",
     inputClassName = "notor14",
@@ -14,10 +17,13 @@ const Input = (props) => {
       {text && <p className={textClassName}>{text}</p>}
 
       <input
+        onChange={onChange}
         className={inputClassName}
+        name={name}
         placeholder={placeholder}
         required={required}
       ></input>
+      {<p className="text__guide">{guideText}</p>}
     </StyledInput>
   );
 };
@@ -58,6 +64,15 @@ const StyledInput = styled.div`
       input::placeholder {
         font-weight: 400 !important;
         color: #a9afb3;
+      }
+
+      .text__guide {
+        margin-top: 4px;
+        margin-bottom: 0;
+        font-family: NoToM;
+        color: #265bff;
+        font-size: 12px;
+        line-height: 26px;
       }
     `;
   }}
