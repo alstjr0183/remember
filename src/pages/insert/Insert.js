@@ -23,7 +23,15 @@ const Insert = () => {
     const { name, day, time } = state;
 
     if (name && day && time) {
-      console.log("등록");
+      setState((prev) => ({
+        ...prev,
+        nameError: false,
+        nameMessage: "",
+        dayError: false,
+        dayMessage: "",
+        timeError: false,
+        timeMessage: "",
+      }));
     } else {
       // 빠진 input alert
       if (!name) {
@@ -32,12 +40,24 @@ const Insert = () => {
           nameError: true,
           nameMessage: "일정을 입력해주세요.",
         }));
+      } else {
+        setState((prev) => ({
+          ...prev,
+          nameError: false,
+          nameMessage: "",
+        }));
       }
       if (day === "요일을 선택해주세요." || !day) {
         setState((prev) => ({
           ...prev,
           dayError: true,
           dayMessage: "요일을 선택해주세요.",
+        }));
+      } else {
+        setState((prev) => ({
+          ...prev,
+          dayError: false,
+          dayMessage: "",
         }));
       }
       if (!time) {
@@ -46,10 +66,16 @@ const Insert = () => {
           timeError: true,
           timeMessage: "시간을 입력해주세요.",
         }));
+      } else {
+        setState((prev) => ({
+          ...prev,
+          timeError: false,
+          timeMessage: "",
+        }));
       }
     }
   };
-
+  console.log(state.time);
   const f_save = (e) => {
     e.preventDefault();
   };

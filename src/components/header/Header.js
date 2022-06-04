@@ -34,6 +34,7 @@ const StyledHeader = styled.div`
       color = `${colors.black1}`,
       backgroundColor = "white",
       borderBottom = "1px solid rgba(67, 77, 84, 0.05);",
+      opacity = "1",
     } = props.styledProp;
 
     return css`
@@ -45,7 +46,7 @@ const StyledHeader = styled.div`
       color: ${color};
       background-color: ${backgroundColor};
       border-bottom: ${borderBottom};
-
+      opacity: ${opacity};
       figure {
         ${flexbox()}
         position:absolute;

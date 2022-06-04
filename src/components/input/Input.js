@@ -32,6 +32,7 @@ const StyledInput = styled.div`
   ${(props) => {
     // prop 구조분해할당
     const {
+      opacity = "1",
       margin = "0 0 24px 0",
       // p
       textColor = "#434D54",
@@ -42,9 +43,12 @@ const StyledInput = styled.div`
       border = `1px solid #E1E4E6`,
       inputPadding = "0 0 0 10px",
       borderRadius = "4px",
+      inputBackgroundColor = "white",
+      inputPlaceholderColor = "#a9afb3",
     } = props.styledProp;
 
     return css`
+      opacity: ${opacity};
       margin: ${margin};
       .notob14 {
         line-height: 22px;
@@ -59,11 +63,12 @@ const StyledInput = styled.div`
         height: ${height};
         padding: ${inputPadding};
         border-radius: ${borderRadius};
+        background-color: ${inputBackgroundColor};
       }
 
       input::placeholder {
         font-weight: 400 !important;
-        color: #a9afb3;
+        color: ${inputPlaceholderColor};
       }
 
       .text__guide {

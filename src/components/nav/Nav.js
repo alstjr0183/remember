@@ -18,7 +18,7 @@ const StyledNav = styled.div`
       width = "100%",
       height = "80px",
       color = `white`,
-      backgroundColor = theme.colors.blueDark,
+      backgroundColor = "#265BFF",
     } = props.styledProp;
 
     return css`
