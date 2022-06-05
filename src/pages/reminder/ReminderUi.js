@@ -12,7 +12,13 @@ import {
 } from "../../../node_modules/@mui/material/index";
 import arrow_bottom from "../../images/common/arrow-bottom.svg";
 
-const ReminderUi = ({ state, a_select, f_check, f_handleInputChange }) => {
+const ReminderUi = ({
+  state,
+  a_select,
+  f_check,
+  f_success,
+  f_handleInputChange,
+}) => {
   const { wrong } = state;
   const s_opacity =
     wrong === 0
@@ -46,12 +52,14 @@ const ReminderUi = ({ state, a_select, f_check, f_handleInputChange }) => {
         <div className="form">
           <Input
             name="name"
+            value={state.name}
             guideText={state.nameMessage}
             onChange={f_handleInputChange}
             placeholder="일정을 입력해 주세요."
             text="일정"
             style={{
               textColor: "white",
+              inputColor: "white",
               border: "1px solid white",
               inputBackgroundColor: "#265bff",
               inputPlaceholderColor: "white",
@@ -60,10 +68,12 @@ const ReminderUi = ({ state, a_select, f_check, f_handleInputChange }) => {
           />
           <div className="form__select">
             <p className="notob14">요일</p>
-            <select className="notor14">
-              <option value="" disabled selected hidden>
-                요일을 선택해주세요.
-              </option>
+            <select
+              value={state.day}
+              className="notor14"
+              name="day"
+              onChange={f_handleInputChange}
+            >
               {a_select.map((item, idx) => (
                 <option key={idx}>{item.text}</option>
               ))}
@@ -71,11 +81,13 @@ const ReminderUi = ({ state, a_select, f_check, f_handleInputChange }) => {
           </div>
 
           <Input
+            value={state.time}
             name="time"
             guideText={state.timeMessage}
             onChange={f_handleInputChange}
             style={{
               textColor: "white",
+              inputColor: "white",
               border: "1px solid white",
               inputBackgroundColor: "#265bff",
               inputPlaceholderColor: "white",
@@ -84,22 +96,27 @@ const ReminderUi = ({ state, a_select, f_check, f_handleInputChange }) => {
             placeholder="HH:MM"
             text="시간"
           />
-          <Input
-            name="memo"
-            onChange={f_handleInputChange}
-            placeholder="위치 또는 메모할 내용을 입력해주세요."
-            text="메모"
-            style={{
-              textColor: "white",
-              border: "1px solid white",
-              inputBackgroundColor: "#265bff",
-              inputPlaceholderColor: "white",
-              // opacity: s_opacity,
-            }}
-          />
+          <div className="memo">
+            <b className="notob14">요일</b>
+            <p>메모입니다</p>
+          </div>
         </div>
       </StyledInsert>
-      <Nav onClick={f_check} text={"되새기기"} />
+      <p
+        className="text__check"
+        style={{
+          position: "fixed",
+          bottom: "96px",
+          fontSize: "12px",
+          color: "#265BFF",
+        }}
+      >
+        입력하신 정보가 맞지 않습니다. ({state.wrong} / 4)
+      </p>
+      <Nav
+        onClick={state.wrong === 4 ? f_success : f_check}
+        text={state.wrong === 4 ? "잊어버림" : "되새기기"}
+      />
     </StyledContainer>
   );
 };
@@ -152,6 +169,19 @@ const StyledInsert = styled.div`
       select::-ms-expand {
             display: none;
       }
+    }
+  }
+
+  .memo {
+    b {
+      display: block;
+      color: white;
+      margin-bottom: 21px;
+    }
+
+    p {
+      color: white;
+      margin-left: 10px;
     }
   }
 `;

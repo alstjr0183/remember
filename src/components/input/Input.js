@@ -11,6 +11,7 @@ const Input = (props) => {
     placeholder = "테스트",
     textClassName = "notob14",
     inputClassName = "notor14",
+    value = "",
   } = props;
   return (
     <StyledInput styledProp={props.style || {}}>
@@ -22,6 +23,7 @@ const Input = (props) => {
         name={name}
         placeholder={placeholder}
         required={required}
+        value={value}
       ></input>
       {<p className="text__guide">{guideText}</p>}
     </StyledInput>
@@ -45,6 +47,7 @@ const StyledInput = styled.div`
       borderRadius = "4px",
       inputBackgroundColor = "white",
       inputPlaceholderColor = "#a9afb3",
+      inputColor = "black",
     } = props.styledProp;
 
     return css`
@@ -58,6 +61,7 @@ const StyledInput = styled.div`
         margin-bottom: 10px;
       }
       input {
+        color: ${inputColor};
         width: ${width};
         border: ${border};
         height: ${height};

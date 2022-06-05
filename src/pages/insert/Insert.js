@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import InsertUi from "./InsertUi";
 import { _handleInputChange } from "../../components/input/inputFc";
+import { useNavigate } from "../../../node_modules/react-router-dom/index";
 
 const Insert = () => {
+  const navi = useNavigate();
   const [state, setState] = useState({
     name: "",
-    day: "요일을 선택해주세요.",
+    day: "월",
     time: "",
     memo: "",
 
@@ -17,6 +19,9 @@ const Insert = () => {
     dayMessage: "",
     timeMessage: "",
   });
+
+  // 로컬 데이터
+  const local_day = JSON.parse(localStorage.getItem("day")) || [];
 
   // 다음 버튼 이벤트
   const f_required = () => {
@@ -32,6 +37,7 @@ const Insert = () => {
         timeError: false,
         timeMessage: "",
       }));
+      f_save();
     } else {
       // 빠진 input alert
       if (!name) {
@@ -75,15 +81,26 @@ const Insert = () => {
       }
     }
   };
-  console.log(state.time);
+
   const f_save = (e) => {
-    e.preventDefault();
+    const ob = {
+      name: state.name,
+      day: state.day,
+      time: state.time,
+      memo: state.memo,
+      wrong: 0,
+      check: false,
+      no: local_day.length + 1,
+    };
+    local_day.push(ob);
+    localStorage.setItem("day", JSON.stringify(local_day));
+    navi("/list", { state: { insert: true } });
   };
 
   const f_handleInputChange = (e) => {
     _handleInputChange(e, state, setState);
   };
-  console.log(state);
+
   const a_select = [
     { text: "월" },
     { text: "화" },
@@ -93,7 +110,7 @@ const Insert = () => {
     { text: "토" },
     { text: "일" },
   ];
-  const props = { state, a_select, f_save, f_required, f_handleInputChange };
+  const props = { state, a_select, f_required, f_handleInputChange };
   return <InsertUi {...props} />;
 };
 

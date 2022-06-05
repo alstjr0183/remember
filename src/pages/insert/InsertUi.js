@@ -12,13 +12,7 @@ import {
 } from "../../../node_modules/@mui/material/index";
 import arrow_bottom from "../../images/common/arrow-bottom.svg";
 
-const InsertUi = ({
-  state,
-  a_select,
-  f_required,
-  f_save,
-  f_handleInputChange,
-}) => {
+const InsertUi = ({ state, a_select, f_required, f_handleInputChange }) => {
   const { nameError, dayError, timeError } = state;
 
   const border = "1px solid #E1E4E6";
@@ -43,21 +37,24 @@ const InsertUi = ({
             키워드 단위로 기억할 경우 기억 효율이 극대화 됩니다.
           </p>
         </div>
-        <form onSubmit={f_save} className="form">
+        <div className="form">
           <Input
             name="name"
             guideText={state.nameMessage}
             onChange={f_handleInputChange}
+            value={state.name}
             placeholder="일정을 입력해 주세요."
             text="일정"
             style={{ border: nameBorder }}
           />
           <div className="form__select">
             <p className="notob14">요일</p>
-            <select className="notor14">
-              <option value="" disabled selected hidden>
-                요일을 선택해주세요.
-              </option>
+            <select
+              name="day"
+              value={state.day}
+              onChange={f_handleInputChange}
+              className="notor14"
+            >
               {a_select.map((item, idx) => (
                 <option key={idx}>{item.text}</option>
               ))}
@@ -84,6 +81,7 @@ const InsertUi = ({
 
           <Input
             name="time"
+            value={state.time}
             guideText={state.timeMessage}
             onChange={f_handleInputChange}
             style={{ border: timeBorder }}
@@ -91,13 +89,14 @@ const InsertUi = ({
             text="시간"
           />
           <Input
+            value={state.memo}
             name="memo"
             onChange={f_handleInputChange}
             placeholder="위치 또는 메모할 내용을 입력해주세요."
             text="메모"
           />
           <Nav onClick={f_required} text={"등록하기"} />
-        </form>
+        </div>
       </StyledInsert>
     </StyledContainer>
   );

@@ -31,7 +31,22 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
   }
 
-
+          /* noto 14 */
+          .notob10 {
+        font-family: NoToB;
+        font-size: 10px;
+        line-height: 12px;
+      }
+      .notom10 {
+        font-family: NoToM;
+        font-size: 10px;
+        line-height: 12px;
+      }
+      .notor10 {
+        font-family: NoToR;
+        font-size: 10px;
+        line-height: 12px;
+      }
 
             /* noto 14 */
             .notob14 {

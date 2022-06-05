@@ -8,7 +8,7 @@ const { fontSizes, colors } = theme;
 
 const Header = (props) => {
   const navi = useNavigate();
-  const { title, back = false } = props;
+  const { title, back = false, history = false } = props;
   return (
     <StyledHeader className={props.className} styledProp={props.style || {}}>
       {back && (
@@ -21,6 +21,16 @@ const Header = (props) => {
         </figure>
       )}
       <div>{title}</div>
+      {history && (
+        <div
+          onClick={() => {
+            navi("/history");
+          }}
+          className="history"
+        >
+          기억력
+        </div>
+      )}
     </StyledHeader>
   );
 };
@@ -51,6 +61,18 @@ const StyledHeader = styled.div`
         ${flexbox()}
         position:absolute;
         left: 16px;
+      }
+
+      .history {
+        ${flexbox()}
+        ${flexbox()}
+        position:absolute;
+        right: 16px;
+
+        font-family: NoTob;
+        font-size: 16px;
+        line-height: 26px;
+        color: #265bff;
       }
     `;
   }}
