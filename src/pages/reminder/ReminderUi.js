@@ -121,7 +121,7 @@ const StyledInsert = styled.div`
   background-color: rgba(38, 91, 255, 1);
   width: 100%;
   overflow: auto;
-  height: calc(100vh - 144px);
+  height: calc(var(--vh, 1vh) * 100 - 144px);
   ${flexbox("flex-start")};
   flex-direction: column;
 

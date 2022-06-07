@@ -48,7 +48,7 @@ const IntroUi = ({ state, f_stepOne, f_stepTwo }) => {
 };
 
 const SyyledIntro = styled.div`
-  height: calc(100vh - 144px);
+  height: calc(var(--vh, 1vh) * 100 - 144px);
   ${flexbox()};
   flex-direction: column;
 
