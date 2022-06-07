@@ -1,8 +1,5 @@
 import styled, { css } from "styled-components";
 import { flexbox } from "../../styles/utils/flexbox";
-import theme from "../../styles/utils/theme";
-
-const { colors } = theme;
 
 export const StyledContainer = styled.div`
   ${(props) => {

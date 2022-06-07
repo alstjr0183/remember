@@ -1,14 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import { StyledContainer } from "../../components/common/StyledContainer";
-import intro1 from "../../images/intro/intro1.svg";
-import intro2 from "../../images/intro/intro2.svg";
 import Header from "../../components/header/Header";
 import { flexbox } from "../../styles/utils/flexbox";
 import Nav from "../../components/nav/Nav";
 
 const IntroUi = ({ state, f_stepOne, f_stepTwo }) => {
-  const { img, title, subTitle, btnText } = state;
+  const { img, title, subTitle } = state;
 
   return (
     <StyledContainer>

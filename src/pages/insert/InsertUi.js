@@ -5,21 +5,15 @@ import styled from "styled-components";
 import Nav from "./../../components/nav/Nav";
 import { flexbox } from "./../../styles/utils/flexbox";
 import Input from "../../components/input/Input";
-import {
-  FormControl,
-  MenuItem,
-  Select,
-} from "../../../node_modules/@mui/material/index";
 import arrow_bottom from "../../images/common/arrow-bottom.svg";
 
 const InsertUi = ({ state, a_select, f_required, f_handleInputChange }) => {
-  const { nameError, dayError, timeError } = state;
+  const { nameError, timeError } = state;
 
   const border = "1px solid #E1E4E6";
   const errorBorder = "1px solid #265BFF";
 
   const nameBorder = nameError ? errorBorder : border;
-  const dayBorder = dayError ? errorBorder : border;
   const timeBorder = timeError ? errorBorder : border;
   return (
     <StyledContainer>
@@ -101,24 +95,6 @@ const InsertUi = ({ state, a_select, f_required, f_handleInputChange }) => {
     </StyledContainer>
   );
 };
-
-const StyledFormControl = styled(FormControl)`
-  .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root.Mui-focused
-    .MuiOutlinedInput-notchedOutline {
-    border: 1px solid #e1e4e6;
-  }
-`;
-
-const StyledSelect = styled(Select)`
-  margin-bottom: 24px;
-
-  fieldset {
-    border-color: 1px solid #e1e4e6 !important;
-  }
-  div {
-    padding: 16.5px 10px;
-  }
-`;
 
 const StyledInsert = styled.div`
   width: 100%;

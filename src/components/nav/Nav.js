@@ -1,6 +1,5 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import theme from "./../../styles/utils/theme";
 
 const Nav = (props) => {
   const { text = "", onClick, className = "notom18" } = props;

@@ -6,7 +6,7 @@ import {
 import ListUi from "./ListUi";
 
 const List = () => {
-  const inserState = useLocation()?.state?.insert;
+  // const inserState = useLocation()?.state?.insert;
 
   // 로컬 데이터
   const local_day = JSON.parse(localStorage.getItem("day")) || [];

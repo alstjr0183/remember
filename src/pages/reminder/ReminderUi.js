@@ -5,11 +5,6 @@ import styled from "styled-components";
 import Nav from "./../../components/nav/Nav";
 import { flexbox } from "./../../styles/utils/flexbox";
 import Input from "../../components/input/Input";
-import {
-  FormControl,
-  MenuItem,
-  Select,
-} from "../../../node_modules/@mui/material/index";
 import arrow_bottom from "../../images/common/arrow-bottom.svg";
 
 const ReminderUi = ({

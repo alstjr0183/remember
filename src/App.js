@@ -8,7 +8,6 @@ import Route from "./routes/FrontRoute";
 import "./styles/font.css";
 import theme from "./styles/utils/theme";
 import GlobalStyle from "./styles/globalStyle";
-import Header from "./components/header/Header";
 
 function App() {
   return (

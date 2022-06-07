@@ -4,7 +4,7 @@ import theme from "../../styles/utils/theme";
 import { flexbox } from "../../styles/utils/flexbox";
 import arrow_left from "../../images/common/arrow-left.svg";
 import { useNavigate } from "../../../node_modules/react-router-dom/index";
-const { fontSizes, colors } = theme;
+const { colors } = theme;
 
 const Header = (props) => {
   const navi = useNavigate();

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import InsertUi from "./InsertUi";
 import { _handleInputChange } from "../../components/input/inputFc";
 import { useNavigate } from "../../../node_modules/react-router-dom/index";
