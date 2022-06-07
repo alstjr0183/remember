@@ -1,5 +1,3 @@
-import { css } from "styled-components";
-
 // colors
 const colors = {
   // 블루계열

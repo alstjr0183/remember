@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  useLocation,
-  useNavigate,
-} from "../../../node_modules/react-router-dom/index";
+import { useNavigate } from "../../../node_modules/react-router-dom/index";
 import ListUi from "./ListUi";
 
 const List = () => {
@@ -46,6 +43,7 @@ const List = () => {
       satInfo: f_findDay("토"),
       sunInfo: f_findDay("일"),
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const a_day = [
@@ -72,6 +70,7 @@ const List = () => {
     return () => {
       clearTimeout(t);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const props = { state, a_day, f_naviInsert };

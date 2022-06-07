@@ -6,6 +6,7 @@ import ReminderUi from "./ReminderUi";
 const Reminder = () => {
   const navi = useNavigate();
   // 로컬 데이터
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const local_day = JSON.parse(localStorage.getItem("day")) || [];
 
   const noCheckData = local_day.filter((s) => s.check === false);
