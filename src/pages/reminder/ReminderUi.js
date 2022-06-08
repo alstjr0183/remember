@@ -9,12 +9,14 @@ import arrow_bottom from "../../images/common/arrow-bottom.svg";
 
 const ReminderUi = ({
   state,
+  noCheckData,
   a_select,
   f_check,
   f_success,
   f_handleInputChange,
 }) => {
   const { wrong } = state;
+
   const s_opacity =
     wrong === 0
       ? "1"
@@ -93,7 +95,7 @@ const ReminderUi = ({
           />
           <div className="memo">
             <b className="notob14">요일</b>
-            <p>메모입니다</p>
+            <p className="notor14">{noCheckData[0].memo}</p>
           </div>
         </div>
       </StyledInsert>
