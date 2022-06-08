@@ -41,7 +41,9 @@ const ListUi = ({ state, f_naviInsert, a_day }) => {
                         ? "0.75"
                         : wrong === 2
                         ? "0.5"
-                        : wrong === 3 && "0.25";
+                        : wrong === 3
+                        ? "0.25"
+                        : wrong === 4 && "0";
                     return (
                       <div
                         key={idx}

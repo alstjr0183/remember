@@ -47,6 +47,12 @@ const GlobalStyle = createGlobalStyle`
         font-size: 10px;
         line-height: 12px;
       }
+                  /* noto 12 */
+                  .notob12 {
+        font-family: NoToB;
+        font-size: 12px;
+        line-height: 26px;
+      }
 
             /* noto 14 */
             .notob14 {

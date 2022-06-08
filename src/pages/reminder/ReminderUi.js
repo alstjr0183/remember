@@ -100,7 +100,7 @@ const ReminderUi = ({
         </div>
       </StyledInsert>
       <p
-        className="text__check"
+        className="text__check notob12"
         style={{
           position: "fixed",
           bottom: "96px",

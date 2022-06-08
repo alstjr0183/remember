@@ -27,7 +27,7 @@ const List = () => {
   };
 
   const f_findDay = (day) => {
-    const result = local_day.filter((s) => s.day === day && s.wrong !== 4);
+    const result = local_day.filter((s) => s.day === day);
     return result;
   };
 

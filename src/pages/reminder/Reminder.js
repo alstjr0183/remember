@@ -17,7 +17,7 @@ const Reminder = () => {
     time: "",
     memo: "",
 
-    wrong: 0,
+    wrong: noCheckData[0].wrong,
 
     count: 0,
   });
