@@ -94,7 +94,7 @@ const ReminderUi = ({
             text="시간"
           />
           <div className="memo">
-            <b className="notob14">요일</b>
+            <b className="notob14">메모</b>
             <p className="notor14">{noCheckData[0].memo}</p>
           </div>
         </div>
