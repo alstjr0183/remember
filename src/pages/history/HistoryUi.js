@@ -46,7 +46,14 @@ const HistoryUi = () => {
                 ? "0.25"
                 : wrong === 4 && "0";
             return (
-              <div style={{ opacity: opacity }} key={idx} className="box">
+              <div
+                style={{
+                  opacity: opacity,
+                  marginRight: (idx + 1) % 4 === 0 ? "" : "10px",
+                }}
+                key={idx}
+                className="box"
+              >
                 <p className="notom10">{item.name}</p>
               </div>
             );
@@ -64,11 +71,11 @@ const StyledHistory = styled.div`
     padding: 16px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
     width: 100%;
 
     .box {
-      width: 18%;
+      width: 22%;
       height: 64.71px;
       background-color: #265bff;
       border-radius: 4px;

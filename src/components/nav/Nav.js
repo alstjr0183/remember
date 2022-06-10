@@ -1,11 +1,32 @@
 import React from "react";
 import styled, { css } from "styled-components";
+import { flexbox } from "../../styles/utils/flexbox";
 
 const Nav = (props) => {
-  const { text = "", onClick, className = "notom18" } = props;
+  const {
+    text = "",
+    onClick,
+    onClick1,
+    onClick2,
+    className = "notom18",
+    forget = false,
+  } = props;
   return (
-    <StyledNav styledProp={props.style || {}} onClick={onClick}>
-      <button className={className}>{text}</button>
+    <StyledNav styledProp={props.style || {}}>
+      {forget ? (
+        <div className="forget">
+          <button onClick={onClick1} className={className}>
+            그만하기
+          </button>
+          <button onClick={onClick2} className={className}>
+            다시하기
+          </button>
+        </div>
+      ) : (
+        <button onClick={onClick} className={className}>
+          {text}
+        </button>
+      )}
     </StyledNav>
   );
 };
@@ -31,7 +52,15 @@ const StyledNav = styled.div`
         background-color: ${backgroundColor};
         color: ${color};
         width: 100%;
-        height: 100%;
+        height: ${height};
+      }
+
+      .forget {
+        ${flexbox()}
+        button:first-child {
+          background-color: #afb0b3;
+          height: 80px;
+        }
       }
     `;
   }}

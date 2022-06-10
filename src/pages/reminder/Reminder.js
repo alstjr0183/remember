@@ -35,6 +35,27 @@ const Reminder = () => {
     }
   };
 
+  // 다시하기 함수
+  const f_retry = () => {
+    // 배열에서 몇번째 no에 있는 확인하기위해 변수선언
+    const local_index = noCheckData[state.count].no - 1;
+
+    // 배열의 틀린횟수를 0으로 바꿔주는 부분
+    const object = {
+      // ... 사용해서 데이터 불변성 지켜주기
+      ...local_day[local_index],
+      wrong: 0,
+    };
+
+    // 아까 몇번째 no인지 찾았으니 로컬스토리지 배열에 저장
+    local_day[local_index] = object;
+    // 로컬스토리지에 저장
+    localStorage.setItem("day", JSON.stringify(local_day));
+    // 수행후 page를 list로 이동하고 retry 라는 상태를 이용해 그후 로직 구현
+    navi("/list", { state: { retry: true } });
+  };
+
+  // 되새기기 성공 함수
   const f_success = () => {
     const local_index = noCheckData[state.count].no - 1;
     const object = {
@@ -43,11 +64,11 @@ const Reminder = () => {
     };
 
     local_day[local_index] = object;
-
     localStorage.setItem("day", JSON.stringify(local_day));
     navi("/list");
   };
 
+  // 되새기기 틀렸을때 함수
   const f_error = () => {
     if (noCheckData[state.count].wrong < 4) {
       setState({
@@ -60,8 +81,8 @@ const Reminder = () => {
         ...local_day[local_index],
         wrong: local_day[local_index].wrong + 1,
       };
-      local_day[local_index] = object;
 
+      local_day[local_index] = object;
       localStorage.setItem("day", JSON.stringify(local_day));
     }
   };
@@ -91,6 +112,7 @@ const Reminder = () => {
     f_handleInputChange,
     f_check,
     f_success,
+    f_retry,
   };
   return <ReminderUi {...props} />;
 };

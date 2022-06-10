@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "../../../node_modules/react-router-dom/index";
+import {
+  useLocation,
+  useNavigate,
+} from "../../../node_modules/react-router-dom/index";
 import ListUi from "./ListUi";
 
 const List = () => {
-  // const inserState = useLocation()?.state?.insert;
+  const retryState = useLocation()?.state?.retry;
 
   // 로컬 데이터
   const local_day = JSON.parse(localStorage.getItem("day")) || [];
@@ -20,10 +23,15 @@ const List = () => {
     sunInfo: [],
 
     reload: false,
+    retry: retryState,
   });
 
-  const f_naviInsert = () => {
-    navi("/insert");
+  const f_navi = (url) => {
+    if (state.retry) {
+      navi("/reminder");
+    } else {
+      navi("/insert");
+    }
   };
 
   const f_findDay = (day) => {
@@ -73,7 +81,7 @@ const List = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const props = { state, a_day, f_naviInsert };
+  const props = { state, a_day, f_navi };
   return <ListUi {...props} />;
 };
 

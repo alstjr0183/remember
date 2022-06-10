@@ -13,6 +13,7 @@ const ReminderUi = ({
   a_select,
   f_check,
   f_success,
+  f_retry,
   f_handleInputChange,
 }) => {
   const { wrong } = state;
@@ -110,10 +111,13 @@ const ReminderUi = ({
       >
         입력하신 정보가 맞지 않습니다. ({state.wrong} / 4)
       </p>
-      <Nav
-        onClick={state.wrong === 4 ? f_success : f_check}
-        text={state.wrong === 4 ? "잊어버림" : "되새기기"}
-      />
+      {state.wrong === 4 ? (
+        <>
+          <Nav forget={true} onClick1={f_success} onClick2={f_retry} />
+        </>
+      ) : (
+        <Nav onClick={f_check} text={"되새기기"} />
+      )}
     </StyledContainer>
   );
 };

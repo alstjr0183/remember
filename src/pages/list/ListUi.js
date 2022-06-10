@@ -5,16 +5,16 @@ import styled from "styled-components";
 import Nav from "./../../components/nav/Nav";
 import { flexbox } from "./../../styles/utils/flexbox";
 
-const ListUi = ({ state, f_naviInsert, a_day }) => {
+const ListUi = ({ state, f_navi, a_day }) => {
   return (
     <StyledContainer>
-      <Header
-        title="첫째주 기억"
-        className="notom18"
-        history={true}
-        style={{ color: "#434D54" }}
-      />
-      <StyledList>
+      <StyledList retry={state.retry}>
+        <Header
+          title="첫째주 기억"
+          className="notom18"
+          history={true}
+          style={{ color: "#434D54" }}
+        />
         <div className="contents">
           {a_day.map((item, idx) => {
             const length = item.info.length;
@@ -59,8 +59,8 @@ const ListUi = ({ state, f_naviInsert, a_day }) => {
             );
           })}
         </div>
-        <Nav onClick={f_naviInsert} text={"등록하기"} />
       </StyledList>
+      <Nav onClick={f_navi} text={state.retry ? "다시 되새기기" : "등록하기"} />
     </StyledContainer>
   );
 };
@@ -68,6 +68,7 @@ const ListUi = ({ state, f_naviInsert, a_day }) => {
 const StyledList = styled.div`
   width: 100%;
   overflow: auto;
+  opacity: ${(props) => (props.retry ? "0.25" : "1")};
   height: calc(var(--vh, 1vh) * 100 - 144px);
   ${flexbox()};
   flex-direction: column;
