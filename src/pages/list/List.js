@@ -28,18 +28,21 @@ const List = () => {
 
   const f_navi = (url) => {
     if (state.retry) {
+      // 다시되새기기 화면일땐 되새기기 페이지로 이동
       navi("/reminder");
     } else {
+      // list 보여주는 화면일땐 등록 페이지로 이동
       navi("/insert");
     }
   };
 
+  // 로컬스토리지에 저장된 요일 찾는 함수
   const f_findDay = (day) => {
     const result = local_day.filter((s) => s.day === day);
     return result;
   };
 
-  // 요일에따른 셋팅
+  // f_findDay를 이용한 요일 정렬
   useEffect(() => {
     setState({
       ...state,
@@ -64,6 +67,7 @@ const List = () => {
     { day: "일", info: state.sunInfo },
   ];
 
+  // 만약에 check가 안된 정보가있는경우 10초뒤 되새기기 페이지로가는 함수
   useEffect(() => {
     const result = local_day.some((item) => item.check === false);
 

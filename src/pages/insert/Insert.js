@@ -28,6 +28,7 @@ const Insert = () => {
     const { name, day, time } = state;
 
     if (name && day && time) {
+      // 필수값 인풋이 전부 있다면 데이터 저장
       setState((prev) => ({
         ...prev,
         nameError: false,
@@ -82,6 +83,7 @@ const Insert = () => {
     }
   };
 
+  // 로컬스토리지 저장함수
   const f_save = (e) => {
     const ob = {
       name: state.name,
@@ -92,15 +94,20 @@ const Insert = () => {
       check: false,
       no: local_day.length + 1,
     };
+    // 배열에다가 push 함수로 저장할 객체 저장
     local_day.push(ob);
+    // 로컬스토리지에 바뀐 배열 저장
     localStorage.setItem("day", JSON.stringify(local_day));
-    navi("/list", { state: { insert: true } });
+    // 저장후 list 페이지로 이동
+    navi("/list");
   };
 
+  // 인풋 변경 이벤트
   const f_handleInputChange = (e) => {
     _handleInputChange(e, state, setState);
   };
 
+  // 요일 배열ㄴ
   const a_select = [
     { text: "월" },
     { text: "화" },

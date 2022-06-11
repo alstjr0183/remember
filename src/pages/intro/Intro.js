@@ -7,6 +7,8 @@ import { useNavigate } from "../../../node_modules/react-router-dom/index";
 
 const Intro = () => {
   const navi = useNavigate();
+
+  // 인트로 처음 화면 버튼 클릭시
   const f_stepOne = () => {
     setState({
       ...state,
@@ -19,6 +21,7 @@ const Intro = () => {
     });
   };
 
+  // 인트로 2번째 화면 버튼 클릭시
   const f_stepTwo = () => {
     setState({
       ...state,
@@ -31,6 +34,7 @@ const Intro = () => {
     });
   };
 
+  // list 페이지로 이동 함수
   const f_naviList = () => {
     navi("list");
   };

@@ -11,6 +11,7 @@ function FrontRoutes() {
   return (
     <Router>
       <Routes>
+        {/* 페이지 url 설정 */}
         <Route path="/" element={<Intro />} />
         <Route path="/list" element={<List />} />
         <Route path="/insert" element={<Insert />} />

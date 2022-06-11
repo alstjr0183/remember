@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "../../../node_modules/react-router-dom/index";
 import { _handleInputChange } from "../../components/input/inputFc";
 import ReminderUi from "./ReminderUi";
@@ -22,6 +22,7 @@ const Reminder = () => {
     count: 0,
   });
 
+  // 인풋에 입력한 정보와 로컬스토리지에 저장된 정보가 맞을경우 조건에따른 함수실행
   const f_check = () => {
     const { name, day, time } = noCheckData[state.count];
 
@@ -87,14 +88,10 @@ const Reminder = () => {
     }
   };
 
+  // 인풋 상태변경 함수
   const f_handleInputChange = (e) => {
     _handleInputChange(e, state, setState);
   };
-
-  useEffect(() => {
-    if (noCheckData.length === 0) {
-    }
-  }, [local_day, noCheckData]);
 
   const a_select = [
     { text: "월" },

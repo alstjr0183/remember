@@ -6,23 +6,6 @@ import styled from "styled-components";
 const HistoryUi = () => {
   const local_day = JSON.parse(localStorage.getItem("day")) || [];
 
-  //   const local_day = [
-  //     { name: "특정" },
-  //     { name: "특정" },
-  //     { name: "특정" },
-  //     { name: "특정" },
-  //     { name: "특정" },
-  //     { name: "특정" },
-  //     { name: "특정" },
-  //     { name: "특정" },
-  //     { name: "특정" },
-  //     { name: "특정" },
-  //     { name: "특정" },
-  //     { name: "특정" },
-  //     { name: "특정" },
-  //     { name: "특정" },
-  //     { name: "특정" },
-  //   ];
   return (
     <StyledContainer>
       <Header
