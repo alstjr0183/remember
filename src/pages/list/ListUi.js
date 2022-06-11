@@ -17,17 +17,6 @@ const ListUi = ({ state, f_navi, a_day }) => {
         />
         <div className="contents">
           {a_day.map((item, idx) => {
-            const length = item.info.length;
-
-            const size =
-              length === 1
-                ? "100%"
-                : length === 2
-                ? "48%"
-                : length === 3
-                ? "31%"
-                : length === 4 && "23%";
-
             return (
               <div className="contents__day notob14" key={idx}>
                 <div className="contents__day-left">{item.day}</div>
@@ -47,7 +36,7 @@ const ListUi = ({ state, f_navi, a_day }) => {
                     return (
                       <div
                         key={idx}
-                        style={{ width: size, opacity: opacity }}
+                        style={{ opacity: opacity }}
                         className="contents__day-right-block"
                       >
                         <p className="notom10">{item2.name}</p>
@@ -93,11 +82,15 @@ const StyledList = styled.div`
       }
       .contents__day-right {
         padding: 12px;
-        width: 100%;
+        width: calc(100% - 40px);
+        overflow: auto;
 
         background-color: #f8fafb;
-        ${flexbox("space-between")}
+        ${flexbox("flex-start")}
         .contents__day-right-block {
+          width: 55px;
+          min-width: 55px;
+          margin-right: 10px;
           height: 100%;
           background-color: #265bff;
           border-radius: 4px;
